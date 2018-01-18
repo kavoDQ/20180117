@@ -6,9 +6,10 @@ import java.util.ArrayList;
  * Created by Student on 2018/1/17.
  */
 
-public class StudentscoreDAO {
+public class StudentscoreDAO implements StudentDAO{
     public ArrayList<Student> mlist;
     public StudentscoreDAO() {mlist = new ArrayList<>();}
+
     public boolean add(Student s){ //新增傳值是不是正確
         mlist.add(s);
         return true;
@@ -50,6 +51,11 @@ public class StudentscoreDAO {
             }
         }
         // mlist.remove(id); 如果直接寫是刪除該位置
-        return true;
+        return false;
     }
+//    public Student getsum (int score)
+//    {
+//
+//        mlist.get()
+//    }
 }

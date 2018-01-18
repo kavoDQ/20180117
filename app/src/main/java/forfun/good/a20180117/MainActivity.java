@@ -12,24 +12,26 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
+import forfun.good.a20180117.data.DBtype;
 import forfun.good.a20180117.data.Student;
+import forfun.good.a20180117.data.StudentDAO;
+import forfun.good.a20180117.data.studentDAOFactory;
+import forfun.good.a20180117.data.StudentFileDAO;
 import forfun.good.a20180117.data.StudentscoreDAO;
 
 public class MainActivity extends AppCompatActivity {
-    final public static StudentscoreDAO dao = new StudentscoreDAO(); //APP每個地方都能用
+    //final public static StudentscoreDAO dao = new StudentscoreDAO(); //APP每個地方都能用
+    public static StudentDAO dao; //從檔案抓資料
     ListView lv;
-    Intent it;
-
-    public MainActivity() {
-        it = new Intent(String.valueOf(( R.id.listView)));
-        dao.getStudent(1);
-
-    }
+    DBtype dbtype;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        dbtype = DBtype.File;
+        dao = studentDAOFactory.getDAOInstance(this,dbtype);
+
     }
 
 
@@ -69,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
         if (item.getItemId() == R.id.main_Add)
         {
             Intent it = new Intent(MainActivity.this,AddActivity.class);
-            startActivity(it);
+            startActivity(it); //跳頁
         }
         return super.onOptionsItemSelected(item);
     }

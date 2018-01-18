@@ -6,40 +6,6 @@
     android:layout_height="match_parent"
     tools:context="forfun.good.a20180117.AddActivity">
 
-    <Button
-        android:id="@+id/button3"
-        style="@android:style/Widget.DeviceDefault.Button"
-        android:layout_width="wrap_content"
-        android:layout_height="54dp"
-        android:layout_marginEnd="260dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/ic_launcher_background"
-        android:backgroundTint="?android:attr/colorActivatedHighlight"
-        android:onClick="CL3"
-        android:text="返回"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display2"
-        android:textColor="@android:color/background_dark"
-        android:textSize="36sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText3" />
-
-    <Button
-        android:id="@+id/button"
-        style="@android:style/Widget.DeviceDefault.Button"
-        android:layout_width="wrap_content"
-        android:layout_height="54dp"
-        android:layout_marginEnd="136dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/ic_launcher_background"
-        android:backgroundTint="?android:attr/colorActivatedHighlight"
-        android:onClick="CL2"
-        android:text="刪除"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display2"
-        android:textColor="@android:color/background_dark"
-        android:textSize="36sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText3" />
-
     <EditText
         android:id="@+id/editText"
         android:layout_width="0dp"

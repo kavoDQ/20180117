@@ -1,5 +1,7 @@
 package forfun.good.a20180117;
 
+import android.widget.EditText;
+
 import org.junit.Test;
 
 import forfun.good.a20180117.data.Student;
@@ -62,6 +64,13 @@ public class ExampleUnitTest {
         assertEquals("Dada", dao.getStudent(1).name);
 
 
+    }
+    @Test
+    public void tt6sum() throws Exception{
+        StudentscoreDAO dao = new StudentscoreDAO();
+        dao.add(new Student(1, "ben", 70));
+        dao.add(new Student(2, "sam", 40));
+        //assertEquals("sum",dao.getsum(110));
     }
 
 }

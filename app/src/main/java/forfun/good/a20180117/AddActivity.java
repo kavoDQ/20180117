@@ -28,15 +28,5 @@ public class AddActivity extends AppCompatActivity {
         finish();
 
     }
-    public void CL2(View view)
-    {
 
-    }
-    public void CL3(View View)
-    {
-        Intent intent = new Intent();
-        intent.setClass(AddActivity.this, MainActivity.class);
-        startActivity(intent);
-        AddActivity.this.finish();
-    }
 }
