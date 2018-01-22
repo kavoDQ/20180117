@@ -16,15 +16,3 @@ public class Student {
     }
 
 }
-
-class Studentsum {
-    public int sum ;
-    public int id;
-    public String name;
-    public int score;
-
-    public Studentsum(int score)
-    {
-      this.score = score;
-    }
-}

@@ -5,7 +5,7 @@ import android.content.Context;
 /**
  * Created by Student on 2018/1/18.
  */
-//用來切換控制檔案存在記憶體還是文件中
+//用來切換控制檔案存在記憶體還是文件中或資料庫
 public class studentDAOFactory {
     public static  StudentDAO getDAOInstance(Context context,DBtype dbtype)
     {
@@ -15,6 +15,8 @@ public class studentDAOFactory {
                 return new StudentscoreDAO();
             case File:
                 return new StudentFileDAO(context);
+            case DB:
+                return new StudentDAODBImpl(context);
         }return null;
     }
 }
