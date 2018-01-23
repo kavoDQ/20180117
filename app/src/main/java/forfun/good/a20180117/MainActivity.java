@@ -24,42 +24,48 @@ public class MainActivity extends AppCompatActivity {
     public static StudentDAO dao; //從檔案抓資料
     ListView lv;
     DBtype dbtype;
-
+    ArrayList<String> studentNames;
+    ArrayAdapter<String> adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        dbtype = DBtype.DB;
-        dao = studentDAOFactory.getDAOInstance(this,dbtype);
+        dbtype = DBtype.CLOUD;
+        dao = studentDAOFactory.getDAOInstance(this, dbtype);
+        studentNames = new ArrayList<>();
+        adapter = new ArrayAdapter<String>(MainActivity.this,
+                android.R.layout.simple_list_item_1, studentNames);
+        lv = findViewById(R.id.listView);
+        lv.setAdapter(adapter);
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                Intent it = new Intent(MainActivity.this, DetailActivity.class);
+                it.putExtra("id", dao.getList().get(position).id);
+                startActivity(it);
+            }
+        });
 
     }
-
-
 
 
     @Override
     protected void onResume() {
         super.onResume();
-        lv = findViewById(R.id.listView);
-        ArrayList<String> studentNames = new ArrayList<>();
-        for (Student s: dao.getList())
+        refreshData();
+
+
+    }
+
+    public  void refreshData()
+    {
+        studentNames.clear();
+        for(Student s: dao.getList())
         {
             studentNames.add(s.name);
         }
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(MainActivity.this,
-                android.R.layout.simple_list_item_1,studentNames);
-        lv.setAdapter(adapter);
-        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-                Intent it = new Intent(MainActivity.this,DetailActivity.class);
-                it.putExtra("id",dao.getList().get(position).id);
-                startActivity(it);
-            }
-        });
+        adapter.notifyDataSetChanged();
     }
-
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.mymenu,menu);  //創造出顯示Menu鍵
